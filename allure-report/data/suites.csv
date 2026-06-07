@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","17696","@Web Mocking 6 Events","chromium","2026-06-02","passed","2026-06-02","","Assignment3.spec.js","",""
+"","9164","@Web Calender Validation","chromium","2026-06-02","passed","2026-06-02","","checkCalender.spec.js","",""
+"","4801","Client app Login","chromium","2026-06-02","passed","2026-06-02","","ClientAPPObject.spec.js","",""
+"","17470","@Web Book Slot","chromium","2026-06-02","failed","2026-06-02","","assignment2.spec.js","",""
