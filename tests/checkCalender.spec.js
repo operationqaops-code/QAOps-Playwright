@@ -16,6 +16,8 @@ test("@Web Calender Validation",async({page})=>{
     const inputs=await page.locator(".react-date-picker__inputGroup__input");
     const expectedList=[monthNumber,date,year];
 
+    //check calender
+
     for(let i=0;i<expectedList.lengt;i++){
         const values= await inputs.nth(i).inputValue();
         expect(values).toEqual(expectedList[i]);
