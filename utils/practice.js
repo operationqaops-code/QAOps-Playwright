@@ -72,4 +72,3 @@ console.log(sumTwoNumber(5,4));
 
 console.log("JavaScript");
 
-
