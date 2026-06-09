@@ -271,5 +271,88 @@ function printHeadline(headline) {
 }
 */
 
+//Given is a string hangmanString. Replace every second letter with an underscore and return the result as a string.
+// The first character must be an underscore.
+
+function hangman(hangmanString) {
+    let newStr=""
+  
+    for(let i=0;i<hangmanString.length;i++){
+        if(i%2==0){
+           newStr += "_";
+          // console.log(newStr);
+        }else{
+            newStr += hangmanString[i];
+           // console.log(newStr);
+        }
+    }
+
+    return newStr;
+}
+
+//console.log(hangman("TestString"));
+
+//Write a JavaScript function that calculates the average grade of a student based on the scores they achieved in different subjects.
+//  Given is the array scores. Return the calculated average rounded to two decimal places. The length of the array will be at least 1.
+
+function calculateAverageGrade(scores) {
+    let sum=0;
+    let avg;
+    
+    for(let i=0;i<scores.length;i++){
+        sum+=scores[i];
+        
+
+    }
+
+      avg = sum / scores.length;
+
+    return Number(avg.toFixed(2));
+  
+}
+
+//console.log(calculateAverageGrade([85,90,92,88,76]));
+
+function removeObjectProperties(object, removeProperties) {
+    const clone = { ...object };
+
+    for (let i = 0; i < removeProperties.length; i++) {
+        delete clone[removeProperties[i]];
+    }
+
+    return clone;
+}
+
+// Example
+const object = {
+    name: "John",
+    age: 25,
+    city: "London"
+};
+
+const removeProperties = ["age"];
+
+//console.log(removeObjectProperties(object, removeProperties));
+
+//A string sentence is given. Return true if the block starts with "Hello".
+
+function firstHello(sentence) {
+
+    if(sentence.startsWith("Hello")){
+        return true;
+    }else{
+        return false;
+    }
+
+  
+}
+
+//console.log(firstHello('Hello world!'));
+
+//Given is a string n. The task is to return the sentence in CamelCase notation. 
+//This means that each new word is capitalized and immediately appended to the old word. Start with a lowercase letter.
+
+
+
 
 
