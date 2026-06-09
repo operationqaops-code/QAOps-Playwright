@@ -14,7 +14,7 @@ class POManager{
         return this.loginPage;
     }
 
-    searchProductAddCart(){
+    getDashboardPage(){
         return this.dashboardPage;
     }
 

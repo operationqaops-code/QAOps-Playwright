@@ -10,7 +10,7 @@ test.describe('Ecom App Login', () => {
         await loginPage.goTo();
         await loginPage.signUpUser('awalom.official@gmail.com', 'Abdul@786');
 
-        const dashboardPage = poManager.searchProductAddCart();
+        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateAndValidateCart(productName);
     });
