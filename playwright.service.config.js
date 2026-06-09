@@ -11,6 +11,9 @@ export default defineConfig(
     connectTimeout: 3 * 60 * 1000, // 3 minutes
     os: ServiceOS.LINUX,
     credential: new DefaultAzureCredential(),
+    env: {
+      PLAYWRIGHT_SERVICE_PROTOCOL: 'wss',
+    },
   }),
   {
     /*
