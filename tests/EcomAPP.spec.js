@@ -13,5 +13,11 @@ test.describe('Ecom App Login', () => {
         const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateAndValidateCart(productName);
+
+        const placeOrderPage =poManager.getPlaceOrderPage();
+        await placeOrderPage.getCountryForShipping();
+        await placeOrderPage.fillCardDetails();
+        await placeOrderPage.submitOrder();
+        await placeOrderPage.validateOrderDeatails(productName);
     });
 });

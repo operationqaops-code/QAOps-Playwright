@@ -1,5 +1,6 @@
 const {LoginPage} =require('./LoginPage');
 const {DashboardPage} =require('./DashboardPage');
+const {PlaceOrderPage} =require('./PlaceOrderPage');
 
 class POManager{
 
@@ -7,6 +8,7 @@ class POManager{
         this.page=page;
         this.loginPage=new LoginPage(this.page);
         this.dashboardPage= new DashboardPage(this.page);
+        this.placeOrderPage=new PlaceOrderPage(this.page);
     }
 
 
@@ -18,6 +20,9 @@ class POManager{
         return this.dashboardPage;
     }
 
+    getPlaceOrderPage(){
+        return this.placeOrderPage;
+    }
 }
 
 module.exports={POManager};

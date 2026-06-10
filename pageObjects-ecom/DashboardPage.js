@@ -7,6 +7,7 @@ class DashboardPage{
         this.products=page.locator('.card-body');
         this.productName=page.locator('.card-body b');
         this.cart=page.locator("[routerlink *='cart']");
+        this.checkoutButton=page.getByRole("button",{name:"Checkout"});
 
     }
 
@@ -21,6 +22,7 @@ class DashboardPage{
         await this.cart.click();
         //put assertion to productName
         await expect(this.page.getByText(productName)).toBeVisible();
+        await this.checkoutButton.click();
     }
 
 }
