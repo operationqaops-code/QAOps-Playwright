@@ -4,15 +4,25 @@ const {POManager} = require('../pageObjects-tricentics/POManager');
 test.describe('Tricentics Ecom App Login', () => {
 
     test('Login with valid credentials & make a order', async ({page}) => {
-        const userName="qaops.azure@gmail.com";
-        const passWord="Abdul@786";
-        const productName="Electronics";
-        const purchaseItem="Smartphone";
-        const countryName="India";
-        const pinCode="73616";
-        const city="Kolkata";
-        const address1="NewTown Sector 5";
-        const phoneNumber="9876543210";
+        const testData = require('../test-data-tricentics/confirmOrder.json');
+        const userName = testData.loginCredentials.userName;
+        const passWord = testData.loginCredentials.passWord;
+        const productName = testData.productDetails.productName;
+        const purchaseItem = testData.productDetails.purchaseItem;
+        const countryName = testData.shippingDetails.countryName;
+        const pinCode = testData.shippingDetails.pinCode;
+        const city = testData.shippingDetails.city;
+        const address1 = testData.shippingDetails.address1;
+        const phoneNumber = testData.shippingDetails.phoneNumber;
+        const ExpectedShippingMethod = testData.orderDetails.ExpectedShippingMethod;
+        const PaymentMethod = testData.orderDetails.PaymentMethod;
+        const cardType = testData.cardDetails.cardType;
+        const cardholderName = testData.cardDetails.cardholderName;
+        const cardNumber = testData.cardDetails.cardNumber;
+        const expireMonth = testData.cardDetails.expireMonth;
+        const expireYear = testData.cardDetails.expireYear;
+        const cardCode = testData.cardDetails.cardCode;
+
         const poManager=new POManager(page);
         const loginPage=poManager.getLoginPage();
         await loginPage.goTo();
@@ -30,8 +40,11 @@ test.describe('Tricentics Ecom App Login', () => {
 
         const checkoutpage=poManager.getcheckOutPage();
         await checkoutpage.checkOutProduct(userName,countryName,city,address1,pinCode,phoneNumber);
-        
+        await checkoutpage.getShippingMethod(ExpectedShippingMethod);
+        await checkoutpage.getPaymentMethod(PaymentMethod);
+        await checkoutpage.getCardDetails(cardType, cardholderName, cardNumber, expireMonth, expireYear, cardCode);
 
+        
         
     });
 });

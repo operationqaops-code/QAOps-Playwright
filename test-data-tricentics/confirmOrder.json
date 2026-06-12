@@ -1,0 +1,29 @@
+{
+  "loginCredentials": {
+    "userName": "qaops.azure@gmail.com",
+    "passWord": "Abdul@786"
+  },
+  "productDetails": {
+    "productName": "Electronics",
+    "purchaseItem": "Smartphone"
+  },
+  "shippingDetails": {
+    "countryName": "India",
+    "pinCode": "73616",
+    "city": "Kolkata",
+    "address1": "NewTown Sector 5",
+    "phoneNumber": "9876543210"
+  },
+  "orderDetails": {
+    "ExpectedShippingMethod": "Next Day Air___",
+    "PaymentMethod": "Credit Card"
+  },
+  "cardDetails": {
+    "cardType": "Visa",
+    "cardholderName": "Abdul Alom",
+    "cardNumber": "4111111111111111",
+    "expireMonth": "09",
+    "expireYear": "2027",
+    "cardCode": "123"
+  }
+}

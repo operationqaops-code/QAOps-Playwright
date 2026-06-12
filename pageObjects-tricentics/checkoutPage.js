@@ -12,11 +12,27 @@ class checkoutPage {
         this.postalCode = page.locator("#BillingNewAddress_ZipPostalCode");
         this.phoneNumber = page.locator("#BillingNewAddress_PhoneNumber");
         this.continueButton = page.locator("//input[@onclick='Billing.save()']")
-        this.confirmOrder = page.getByRole("button", { name: "Continue" });
+        this.confirmOrder = page.locator("input[onclick='Shipping.save()']");
         //address locators
         this.addressDropdown = page.locator('#billing-address-select');
         this.addressOptions = page.locator('option');
+        this.pickpCheckbox = page.locator("label[for='PickUpInStore']");
+        //shipping method locators
+        this.shippingOptions = page.locator("input[name='shippingoption']");
+        this.confirmShipping = page.locator(".shipping-method-next-step-button");
+        //payment method locators
+        this.paymentOptions = page.locator('input[name="paymentmethod"]');
+        this.paymentLabels = page.locator('.payment-details label');
+        this.confirmPaymentMethod = page.locator("input[class='button-1 payment-method-next-step-button']");
 
+        //card details locators
+        this.cardType = page.locator("#CreditCardType");
+        this.cardholderName = page.locator("#CardholderName");
+        this.cardNumber = page.locator("#CardNumber");
+        this.expireMonth = page.locator("#ExpireMonth");
+        this.expireYear = page.locator("#ExpireYear");
+        this.cardCode = page.locator("#CardCode");
+        this.confirmPaymentInfo = page.locator("//input[@class='button-1 payment-info-next-step-button']");
 
     }
 
@@ -77,8 +93,64 @@ class checkoutPage {
         // Common step
         await this.continueButton.click();
         await this.confirmOrder.click();
+        await this.page.waitForLoadState('networkidle');
+        // await this.pickpCheckbox.check();
 
 
     }
+
+    async getShippingMethod(ExpectedShippingMethod) {
+        //await this.shippingOptions.waitFor();
+        const count = await this.shippingOptions.count();
+
+
+        for (let i = 0; i < count; i++) {
+            const radio = await this.shippingOptions.nth(i);
+            const value = await radio.getAttribute('value');
+
+
+            if (value?.trim().includes(ExpectedShippingMethod)) {
+                await radio.click();
+                break;
+            }
+        }
+
+        await this.confirmShipping.click();
+
+    }
+
+    async getPaymentMethod(PaymentMethod) {
+        await this.paymentOptions.first().waitFor();
+        const count = await this.paymentOptions.count();
+        console.log(count);
+        for (let i = 0; i < count; i++) {
+            const radio = await this.paymentOptions.nth(i);
+            const label = await this.paymentLabels.nth(i).textContent();
+            if (label?.trim().includes(PaymentMethod)) {
+                await radio.click();
+                break;
+            }
+        }
+        await this.confirmPaymentMethod.click();
+
+    }
+
+    async getCardDetails(cardType, cardholderName, cardNumber, expireMonth, expireYear, cardCode) {
+
+        await this.cardType.selectOption({ label: cardType });
+        await this.cardholderName.fill(cardholderName);
+        await this.cardNumber.fill(cardNumber);
+        await this.expireMonth.selectOption({ label: expireMonth });
+        await this.expireYear.selectOption({ label: expireYear });
+        await this.cardCode.fill(cardCode);
+        await this.confirmPaymentInfo.click();
+
+    }
+
+    async confirmOrder() {
+        const confirmationMessage = this.page.locator('.section.order-completed .title');
+        await expect(confirmationMessage).toHaveText('Your order has been successfully processed!');
+    }
 }
+
 module.exports = { checkoutPage };
