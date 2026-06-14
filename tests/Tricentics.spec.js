@@ -43,6 +43,8 @@ test.describe('Tricentics Ecom App Login', () => {
         await checkoutpage.getShippingMethod(ExpectedShippingMethod);
         await checkoutpage.getPaymentMethod(PaymentMethod);
         await checkoutpage.getCardDetails(cardType, cardholderName, cardNumber, expireMonth, expireYear, cardCode);
+        await checkoutpage.confirmOrderr();
+        //await expect(page.getByText('Your order has been successfully processed!')).toBeVisible();
 
         
         

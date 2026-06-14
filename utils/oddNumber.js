@@ -364,4 +364,21 @@ function repeater(string, n) {
   return result;
 }
 
-console.log(repeater("Hello coder!",5));
+//console.log(repeater("Hello coder!",5));
+
+// let expenses=[10,20,30,40,50]
+// let Sum=0;
+// let Highest;
+// let Lowest;
+// for(let i=0;i<expenses.length;i++){
+    
+//     Sum+=expenses[i];
+    
+// }
+
+
+// Highest=Math.max(...expenses);
+// Lowest=Math.min(...expenses);
+// console.log("sum of the expenses: "+ Sum);
+// console.log("Highest expenses is: " + Highest);
+// console.log("Lowest expenses is: " + Lowest);

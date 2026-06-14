@@ -32,7 +32,11 @@ class checkoutPage {
         this.expireMonth = page.locator("#ExpireMonth");
         this.expireYear = page.locator("#ExpireYear");
         this.cardCode = page.locator("#CardCode");
-        this.confirmPaymentInfo = page.locator("//input[@class='button-1 payment-info-next-step-button']");
+
+        //order confirmation locators
+        this.confirmOrderButton=page.getByRole('button',{name:'Continue'});
+        this.placeOrderButton=page.getByRole('button',{name:'Confirm'});
+        this.continueAfterOrdere=page.getByRole('button',{name:'Continue'});
 
     }
 
@@ -143,13 +147,21 @@ class checkoutPage {
         await this.expireMonth.selectOption({ label: expireMonth });
         await this.expireYear.selectOption({ label: expireYear });
         await this.cardCode.fill(cardCode);
-        await this.confirmPaymentInfo.click();
 
     }
 
-    async confirmOrder() {
-        const confirmationMessage = this.page.locator('.section.order-completed .title');
-        await expect(confirmationMessage).toHaveText('Your order has been successfully processed!');
+    async confirmOrderr() {
+        await this.page.waitForLoadState('networkidle');
+        await this.confirmOrderButton.click();
+        await this.page.waitForLoadState('networkidle');
+        await this.placeOrderButton.click();
+        await this.page.waitForLoadState('networkidle');
+        await expect(this.page.getByText('Your order has been successfully processed!')).toBeVisible();
+        await this.continueAfterOrdere.click();
+        
+
+
+
     }
 }
 
