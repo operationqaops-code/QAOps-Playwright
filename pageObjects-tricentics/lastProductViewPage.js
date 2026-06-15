@@ -10,14 +10,17 @@ class lastProductViewPage{
 
     }
 
-    async verifyLastProductView(purchaseItem){
-        await this.page.waitForLoadState('networkidle');
-        await this.homePageLink.click();
-        await expect(this.lastProductViewLink).toBeVisible();
-        const productNameText=await this.productName.textContent();
-        console.log(productNameText);
-        await expect(productNameText).toBe(purchaseItem);
-    }
+ async verifyLastProductView(purchaseItem) {
+    await this.homePageLink.click();
+    await expect(this.lastProductViewLink).toBeVisible();
+
+    await this.lastProductViewLink.click();
+    await expect(this.productName.first()).toBeVisible();
+
+    const productNameText = await this.productName.first().textContent();
+    console.log(productNameText);
+    await expect(productNameText).toBe(purchaseItem);
+}
 
 }
 

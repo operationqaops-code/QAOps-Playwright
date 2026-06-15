@@ -382,3 +382,27 @@ function repeater(string, n) {
 // console.log("sum of the expenses: "+ Sum);
 // console.log("Highest expenses is: " + Highest);
 // console.log("Lowest expenses is: " + Lowest);
+
+//Given is an object students with the name of the student as key and the marks as value. 
+// Return the total marks of all students with more than 30 marks.
+
+
+
+let students=[
+    { name: "John", marks: 85 },
+    { name: "Alice", marks: 31 },
+    { name: "Bob", marks: 30 },
+    { name: "Eve", marks: 95 },
+    { name: "Charlie", marks: 88 },
+    { name: "David", marks: 25 }
+];
+
+let filteredStudents=students.filter(student => student.marks > 36);
+console.log("Students with more than 30 marks: ", filteredStudents);
+const studentNametoUpperCase=filteredStudents.map(student => student.name.toUpperCase());
+console.log("Students with more than 30 marks in uppercase: ", studentNametoUpperCase);
+let totalMarks=filteredStudents.reduce((sum, student) => sum + student.marks, 0);
+console.log("Total marks of students with more than 30 marks: " + totalMarks);  
+
+
+

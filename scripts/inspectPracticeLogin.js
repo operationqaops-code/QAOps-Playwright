@@ -1,0 +1,28 @@
+const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+  console.log('Page loaded, title:', await page.title());
+  console.log('Sign in button enabled:', await page.locator('#signInBtn').isEnabled());
+  console.log('Terms checkbox visible:', await page.locator('#terms').isVisible());
+  await page.fill('#username', 'rahulshettyacademy');
+  await page.fill('[type="password"]', 'learning');
+  await page.check('#terms');
+  console.log('After fill, sign in enabled:', await page.locator('#signInBtn').isEnabled());
+  await page.click('#signInBtn');
+  await page.waitForTimeout(5000);
+  console.log('After click URL:', page.url());
+  const alert = await page.locator('[style*="block"]').allTextContents();
+  console.log('alert contents', alert);
+  const pre = await page.locator('pre').allTextContents();
+  console.log('pre contents', pre);
+  const iframeCount = await page.frameLocator('iframe').locator('body').count();
+  console.log('iframe count', iframeCount);
+  const errorVisible = await page.locator('#toast-container').isVisible().catch(() => false);
+  console.log('toast visible', errorVisible);
+  if (errorVisible) console.log('toast text', await page.locator('#toast-container').textContent());
+  await page.screenshot({ path: 'd:\PlayWrightAutomation\scripts\practice-login.png', fullPage: true });
+  console.log('screenshot saved');
+  await browser.close();
+})();
