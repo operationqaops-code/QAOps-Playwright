@@ -4,8 +4,8 @@
     "passWord": "Abdul@786"
   },
   "productDetails": {
-    "productName": "Electronics",
-    "purchaseItem": "Smartphone"
+    "productName": "Computers",
+    "purchaseItem": "Desktops"
   },
   "shippingDetails": {
     "countryName": "India",
@@ -25,5 +25,18 @@
     "expireMonth": "09",
     "expireYear": "2027",
     "cardCode": "123"
+  },
+  "filterDetails":{
+    "filterName":"Price: Low to High",
+    "DisplayItem": "4",
+    "ViewType":"List",
+    "ExpectedPrice":"800"
+  },
+  "ComputerConfig":{
+    "processor":"Fast  [+100.00]",
+    "ram":"8 GB  [+60.00]",
+    "hdd":"400 GB  [+100.00]",
+    "softwares":"Other Office Suite  [+40.00]"
+
   }
 }

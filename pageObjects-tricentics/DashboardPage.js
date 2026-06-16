@@ -15,7 +15,7 @@ class DashboardPage {
 
     }
 
-    async searchProductAddCart(productName) {
+    async searchProductAddCart(productName,purchaseItem) {
         const count = await this.menuItems.count();
         for (let i = 0; i < count; i++) {
             const item = this.menuItems.nth(i);
@@ -23,7 +23,7 @@ class DashboardPage {
             if (menuName === productName) {
                 await item.hover();
                 await item.locator('ul.sublist').waitFor({ state: 'visible' });
-                await item.getByRole('link', { name: 'Cell phones' }).click();
+                await item.getByRole('link', { name: purchaseItem }).click();
                 break;
             }
         }
