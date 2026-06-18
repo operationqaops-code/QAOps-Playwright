@@ -397,6 +397,8 @@ let students=[
     { name: "David", marks: 25 }
 ];
 
+//console.log(typeof(students));
+
 let filteredStudents=students.filter(student => student.marks > 36);
 //console.log("Students with more than 30 marks: ", filteredStudents);
 const studentNametoUpperCase=filteredStudents.map(student => student.name.toUpperCase());
@@ -419,7 +421,18 @@ const affordableProducts=discountedPrices.filter(price =>price <50)
 const TotalCost=affordableProducts.reduce((sum,total)=>sum + total,0)
 
 
+let student = {
+    name: 'John',
+    age: 29,
+};
 
+let address = {
+    city: 'Kolkata',
+    country: 'India'
+};
 
+student.address = address; //storing address object inside the address property of the student object."
+
+console.log(student.address.city); //kolkata
 
 
