@@ -433,6 +433,16 @@ let address = {
 
 student.address = address; //storing address object inside the address property of the student object."
 
-console.log(student.address.city); //kolkata
+//console.log(student.address.city); //kolkata
+
+let num=[12,4,2,5,67,3,4,5,68,9]
+
+//console.log(num.sort((a,b)=>a-b));
+
+let x=[1,2,4]
+let y=[5,6,7]
+//console.log(x+y);
+
+
 
 
