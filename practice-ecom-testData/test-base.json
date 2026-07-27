@@ -1,0 +1,10 @@
+  
+
+    {
+    "userName"     : "abdul.walom-1@gmail.com",
+    "userPassword" : "Ab@123",
+    "getProduct"  : "Components",
+    "purchaseItem" : "Monitors (2)",
+    "expectedText" : "India"
+
+    }
