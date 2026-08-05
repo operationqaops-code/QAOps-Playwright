@@ -2,6 +2,7 @@ import {LoginPage} from './LoginPage';
 import {DashboardPage} from './DashboardPage';
 import {mouseAction} from './mouseAction';
 import{paginationWebTable} from './paginationWebTable';
+import{subMenu} from './subMenu';
 import {Page} from '@playwright/test';
 
 export class POManager{
@@ -10,6 +11,7 @@ export class POManager{
     dashboardPage: DashboardPage;
     mouseaction: mouseAction;
     paginationtable:paginationWebTable;
+    submenu:subMenu;
 
     constructor(page: Page){
         this.page=page;
@@ -17,6 +19,7 @@ export class POManager{
         this.dashboardPage=new DashboardPage(this.page);
         this.mouseaction=new mouseAction(this.page);
         this.paginationtable=new paginationWebTable(this.page);
+        this.submenu=new subMenu(this.page);
 
     }
 
@@ -33,6 +36,10 @@ export class POManager{
     }
     getWebTable(){
         return this.paginationtable;
+    }
+
+    getMainCategory(){
+        return this.submenu;
     }
 
 }
