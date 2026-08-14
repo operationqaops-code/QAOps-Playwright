@@ -1,16 +1,48 @@
-import { test, expect, Locator } from '@playwright/test';
+import { test, expect, Locator, request } from '@playwright/test';
+import { customTest } from '../../utils/customFixture';
 
-test('Booking an event', async ({ page }) => {
-    const userEmail: string = "awalom.official4@gmail.com";
-    const userPass: string = "Abdul@7866";
+
+/* const loginPayload = { email: "awalom.official4@gmail.com", password: "Abdul@7866" };
+let token: any;
+ */
+
+/* test.beforeAll(async () => {
+
+    let apiContext = await request.newContext();
+    const loginResponse = await apiContext.post("https://api.eventhub.rahulshettyacademy.com/api/auth/login",
+        {
+            data: loginPayload
+        })
+    console.log(loginResponse.status());
+    //console.log(await loginResponse.text());
+    expect(loginResponse.ok()).toBeTruthy();
+
+    const loginResponseJSON: any = await loginResponse.json();
+    console.log(loginResponseJSON);
+    token = loginResponseJSON.token;
+    console.log(token);
+
+
+}); */
+
+customTest('Booking an event', async ({ page,token }) => {
+
+   await page.addInitScript(value => {
+        window.localStorage.setItem('eventhub_token', value);
+    }, token);
+
     const baseURL: string = "https://eventhub.rahulshettyacademy.com"
     await page.goto(baseURL);
+    /*
 
     //step-1
     await page.getByPlaceholder('you@email.com').fill(userEmail);
     await page.getByLabel('password').fill(userPass);
-    await page.locator('#login-btn').click();
+    await page.locator('#login-btn').click(); */
     await expect(page.locator('h1').first()).toHaveText('Discover & BookAmazing Events');
+
+      const userEmail: string = "awalom.official4@gmail.com";
+    //const userPass: string = "Abdul@7866";
 
     //Step-2
     await page.getByRole('button', { name: 'Admin' }).click();
@@ -107,9 +139,9 @@ test('Booking an event', async ({ page }) => {
     console.log(remainingSeats);
     const seatsAfterBooking = parseInt(seatText!.match(/\d+/)![0], 10);
     console.log(seatsAfterBooking);
-    
+
     await expect(seatsAfterBooking).toBe(seatsBeforeBooking - 3);
-    
+
     await page.pause();
 
 
